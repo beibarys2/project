@@ -20,14 +20,17 @@ import java.util.List;
 @Entity
 @Table(name = "_user")
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue
     private Long id;
     private String firstName;
+    private String name;
     private String lastName;
     private String email;
     private String password;
+
+    @Column(nullable = true)
+    private Boolean blocked;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -66,6 +69,8 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    // Добавление даты регистрации (при необходимости)
+    @Column(nullable = true)
+    private String registrationDate;
 }
-
-
